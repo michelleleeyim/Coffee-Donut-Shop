@@ -13,10 +13,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class activity_coffee extends AppCompatActivity {
     private int NONE = 0;
     private int quantity;
     private Order order;
+    private ArrayList<Order> orderList;
     private TextView coffeeQuantity;
     private TextView subTotalDisplay;
 
@@ -29,17 +32,18 @@ public class activity_coffee extends AppCompatActivity {
     private String[] addIns = new String[5]; // array to store selected add-ins
 
 
-    public void setOrder(Order Order) {
-        this.order = Order;
-    }
-
+//    public void setOrder(Order Order) {
+//        this.order = Order;
+//    }
+//
+//    public void setOrder
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coffee);
         order = (Order) getIntent().getSerializableExtra("order");
+        orderList = (ArrayList<Order>) getIntent().getSerializableExtra("order list");
         activity_coffee coffee = new activity_coffee();
-        coffee.setOrder(order);
         Spinner spinner = findViewById(R.id.spinnerCoffee);
         subTotalDisplay = findViewById(R.id.subTotalDisplay);
         coffeeQuantity = findViewById(R.id.coffeeQuantity);
@@ -95,6 +99,8 @@ public class activity_coffee extends AppCompatActivity {
     public void backClick(View view) {
         Toast.makeText(this, "Main Menu", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("order", order);
+        intent.putExtra("order list", orderList);
         startActivity(intent);
     }
     private Coffee createCoffee(){
