@@ -13,22 +13,33 @@
         android:text="Item Name"/>
 
     <TextView
+        android:id="@+id/item_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Size"/>
+
+    <TextView
         android:id="@+id/item_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="8dp"
         android:text="Quantity"/>
 
     <TextView
         android:id="@+id/item_addins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add-ins"/>
+        android:padding="8dp"
+        android:text="Add-ins: "/>
 
     <TextView
-        android:id="@+id/item_size"
-        android:layout_width="wrap_content"
+        android:id="@+id/item_addins_list"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Size"/>
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:text=""/>
 
     <Button
         android:id="@+id/remove_button"

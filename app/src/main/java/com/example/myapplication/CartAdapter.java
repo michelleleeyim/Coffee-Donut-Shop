@@ -11,8 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import code.*;
+
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> {
 
     private ArrayList<MenuItem> itemList;
@@ -22,7 +24,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         this.itemList = itemList;
         this.context = context;
     }
-//hi
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,17 +36,24 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         MenuItem item = itemList.get(position);
         if(item!=null){
-        // set item name, quantity, add-ins and size (if applicable)
-        holder.itemName.setText(item.getName());
-        holder.itemQuantity.setText("Quantity: " + item.getQuantity());
-        if (item instanceof Coffee) {
-            Coffee coffee = (Coffee) item;
-            holder.itemAddins.setText("Add-ins: " + coffee.getAddIns());
-            holder.itemSize.setText("Size: " + coffee.getCupSize());
-        } else {
-            holder.itemAddins.setText("");
-            holder.itemSize.setText("");
-        }
+            // set item name and quantity
+            holder.itemName.setText(item.getName());
+            holder.itemQuantity.setText("Quantity: " + item.getQuantity());
+
+            if (item instanceof Coffee) {
+                Coffee coffee = (Coffee) item;
+
+                // set add-ins
+                String[] addInsArray = coffee.getAddIns();
+                String addInsList = Arrays.toString(addInsArray);
+                holder.itemAddins.setText("Add-ins: " + addInsList.substring(1, addInsList.length() - 1));
+
+                // set size
+                holder.itemSize.setText("Size: " + coffee.getCupSize());
+            } else {
+                holder.itemAddins.setText("");
+                holder.itemSize.setText("");
+            }
         }
 
         // set remove button onClickListener
@@ -56,9 +65,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
     @Override
     public int getItemCount() {
-        //return itemList.size();
         return itemList == null ? 0 : itemList.size();
-
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -75,4 +82,3 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         }
     }
 }
-
