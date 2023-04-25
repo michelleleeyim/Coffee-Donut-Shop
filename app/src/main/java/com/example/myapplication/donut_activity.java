@@ -1,13 +1,10 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
 import code.*;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,10 +21,12 @@ import java.util.ArrayList;
 
 public class donut_activity extends AppCompatActivity {
     private int NONE = 0;
+    private int increment = 0;
     private int quantity;
     private Order order;
     private ImageView donutImage;
     private TextView donutQuantity;
+    private TextView subTotalDisplay;
     private RadioGroup donutType;
     private RadioButton yeastButton;
     private RadioButton cakeButton;
@@ -38,8 +37,14 @@ public class donut_activity extends AppCompatActivity {
 
     private int selectedQuantity;
     private ArrayList<Order> orderList;
-    private OrderViewModel orderViewModel;
 
+    /**
+     * setter method that assigns the passed in Order to the order variable.
+     * @param Order representing the current order basket.
+     */
+    public void setOrder(Order Order) {
+        this.order = Order;
+    }
 
     /**
      * Setter method that assigns passed in ArrayList of Orders to orderList.
@@ -53,12 +58,15 @@ public class donut_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donut);
 
-        orderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
 
+        order = (Order) getIntent().getSerializableExtra("order");
+        donut_activity donut = new donut_activity();
+        donut.setOrder(order);
         addToCart = findViewById(R.id.addToCart);
         donutImage = findViewById(R.id.donutImage);
         Spinner spinner = findViewById(R.id.spinnerDonut);
         donutQuantity = findViewById(R.id.donutQuantity);
+        subTotalDisplay = findViewById(R.id.subTotalDisplay);
         ImageButton addButton = findViewById(R.id.addButton);
         ImageButton minusButton = findViewById(R.id.minusButton);
         donutType = findViewById(R.id.donutType);
@@ -125,7 +133,6 @@ public class donut_activity extends AppCompatActivity {
     public void backClick(View view){
         Toast.makeText(this, "Main Menu", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainActivity.class);
-//        intent.putExtra("order", order);
         startActivity(intent);
     }
 
@@ -151,10 +158,33 @@ public class donut_activity extends AppCompatActivity {
         }
         else{
             Donut newDonut = new Donut("donut", selectedType,selectedFlavor,quantity);
-            orderViewModel.addToCart(newDonut);
+            order.add(newDonut);
             Toast.makeText(getApplicationContext(), "Added to cart.", Toast.LENGTH_SHORT).show();
-            Log.i("Cart Contents", orderViewModel.getOrder().toString());
+            subTotalDisplay.setText(String.format("$%.2f", order.getTotalPrice()));
+        }
+    }
 
+    public void removeDonut(View view) {
+        if(selectedType == null){
+            Toast.makeText(getApplicationContext(), "Please select the donut type.", Toast.LENGTH_SHORT).show();
+        }else if(selectedFlavor == null){
+            Toast.makeText(getApplicationContext(),"Please select the donut flavor.",Toast.LENGTH_SHORT).show();
+        }else if (quantity == NONE) {
+            Toast.makeText(getApplicationContext(), "Please select a different quantity.", Toast.LENGTH_SHORT).show();
+        } else {
+            Donut newDonut = new Donut("donut", selectedType,selectedFlavor,quantity);
+            Donut currentItem = (Donut) order.returnItem(newDonut);
+            if (currentItem == null) {
+                Toast.makeText(getApplicationContext(), "No matching item.", Toast.LENGTH_SHORT).show();
+            } else {
+                if (currentItem.getQuantity() < quantity) {
+                    Toast.makeText(getApplicationContext(), "Enter quantity less than " + Integer.toString(currentItem.getQuantity() + increment), Toast.LENGTH_SHORT).show();
+                } else {
+                    order.remove(newDonut);
+                    subTotalDisplay.setText(String.format("$%.2f", order.getTotalPrice()));
+                    Toast.makeText(getApplicationContext(), "Removed from cart.", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
     }
 }
