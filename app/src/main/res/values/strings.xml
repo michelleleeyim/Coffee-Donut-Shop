@@ -7,4 +7,10 @@
         <item>Boston Cream</item>
         <item>Powdered Sugar</item>
     </string-array>
+    <string-array name="coffee_size">
+        <item>Short</item>
+        <item>Tall</item>
+        <item>Grande</item>
+        <item>Venti</item>
+    </string-array>
 </resources>

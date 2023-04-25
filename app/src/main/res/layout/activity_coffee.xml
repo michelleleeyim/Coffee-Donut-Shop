@@ -10,18 +10,27 @@
         android:id="@+id/frenchVanilla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
         android:text="French Vanilla"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="359dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.847"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCoffee"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/imageButton2"
         android:layout_width="32dp"
         android:layout_height="28dp"
         android:onClick="backClick"
-        app:srcCompat="@drawable/back"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.036"
+        app:srcCompat="@drawable/back" />
 
     <TextView
         android:id="@+id/textView2"
@@ -30,16 +39,24 @@
         android:text="Coffee Shop"
         android:textSize="34sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="111dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="148dp"
         android:layout_height="118dp"
-        app:srcCompat="@drawable/coffee"
-        tools:layout_editor_absoluteX="131dp"
-        tools:layout_editor_absoluteY="97dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.032"
+        app:srcCompat="@drawable/coffee" />
 
     <TextView
         android:id="@+id/textView4"
@@ -48,15 +65,23 @@
         android:text="Select Size: "
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="241dp" />
+        app:layout_constraintBottom_toTopOf="@+id/spinnerCoffee"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.75" />
 
     <Spinner
         android:id="@+id/spinnerCoffee"
         android:layout_width="357dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="270dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:entries="@array/coffee_size"
+        app:layout_constraintVertical_bias="0.123" />
 
     <TextView
         android:id="@+id/textView8"
@@ -65,82 +90,121 @@
         android:text="Select Flavors:"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="310dp" />
+        app:layout_constraintBottom_toTopOf="@+id/sweetCream"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCoffee"
+        app:layout_constraintVertical_bias="0.518" />
 
     <CheckBox
         android:id="@+id/sweetCream"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sweet Cream"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="332dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCoffee"
+        app:layout_constraintVertical_bias="0.145" />
 
     <CheckBox
         android:id="@+id/irishCream"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Irish Cream"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="389dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frenchVanilla"
+        app:layout_constraintVertical_bias="0.081" />
 
     <CheckBox
         android:id="@+id/caramel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Caramel"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="419dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.242" />
 
     <CheckBox
         android:id="@+id/mocha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="39dp"
         android:text="Mocha"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="451dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.143"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCoffee"
+        app:layout_constraintVertical_bias="0.485" />
 
     <ImageButton
         android:id="@+id/coffeeMinusButton"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        app:srcCompat="@drawable/minus"
-        tools:layout_editor_absoluteX="115dp"
-        tools:layout_editor_absoluteY="519dp" />
+        app:layout_constraintBottom_toTopOf="@+id/removeCoffee"
+        app:layout_constraintEnd_toStartOf="@+id/coffeeQuantity"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCoffee"
+        app:layout_constraintVertical_bias="0.915"
+        app:srcCompat="@drawable/minus" />
 
     <ImageButton
         android:id="@+id/coffeeAddButton"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        app:srcCompat="@drawable/plus"
-        tools:layout_editor_absoluteX="254dp"
-        tools:layout_editor_absoluteY="519dp" />
+        app:layout_constraintBottom_toTopOf="@+id/addCoffee"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.737"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCoffee"
+        app:layout_constraintVertical_bias="0.915"
+        app:srcCompat="@drawable/plus" />
 
     <TextView
         android:id="@+id/coffeeQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="92dp"
         android:text="0"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="200dp"
-        tools:layout_editor_absoluteY="527dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCoffee"
+        app:layout_constraintVertical_bias="0.695" />
 
     <Button
         android:id="@+id/addCoffee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
         android:onClick="addCoffee"
         android:text="Add"
-        tools:layout_editor_absoluteX="238dp"
-        tools:layout_editor_absoluteY="587dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.863"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/removeCoffee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
         android:onClick="removeCoffee"
         android:text="Remove"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="586dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
