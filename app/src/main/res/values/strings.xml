@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">RUCafe</string>
+    <string-array name="donut_flavors">
+        <item>Plain</item>
+        <item>Chocolate</item>
+        <item>Strawberry</item>
+        <item>Boston Cream</item>
+        <item>Powdered Sugar</item>
+    </string-array>
 </resources>
