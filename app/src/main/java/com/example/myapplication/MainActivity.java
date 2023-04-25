@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton coffeeButton;
     private ImageButton cartButton;
     private ImageButton historyButton;
-    private Order order = new Order();
+    private Order order;
     private ArrayList<Order> orderList  = new ArrayList<>();
     private OrderViewModel orderViewModel;
 
@@ -36,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        orderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
-
+        order = new Order();
     }
 
     public void donutClick(View view){
         Toast.makeText(this, "donut", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, donut_activity.class);
+        intent.putExtra("order", order);
         startActivity(intent);
     }
     public void coffeeClick(View view){
@@ -65,7 +65,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        //order = (Order) getIntent().getSerializableExtra("order");
         Log.d("MainActivity", "onResume() called");
+        Log.d("Cart Content", order.toString());
     }
 
 }
