@@ -64,8 +64,6 @@ public class donut_activity extends AppCompatActivity {
         order = (Order) getIntent().getSerializableExtra("order");
         orderList = (ArrayList<Order>) getIntent().getSerializableExtra("order list");
         donut_activity donut = new donut_activity();
-        donut.setOrder(order);
-        donut.setOrderList(orderList);
         addToCart = findViewById(R.id.addToCart);
         donutImage = findViewById(R.id.donutImage);
         Spinner spinner = findViewById(R.id.spinnerDonut);
