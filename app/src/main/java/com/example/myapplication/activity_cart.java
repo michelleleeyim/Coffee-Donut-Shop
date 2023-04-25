@@ -30,15 +30,15 @@ public class activity_cart extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
-
-
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_cart);
+//
+//
 //        recyclerView = findViewById(R.id.shopping_cart);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //
 //
-//        orderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
+//        //orderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
 //
 //        // Retrieve the current order from OrderViewModel
 //        Order currentOrder = orderViewModel.getOrder().getValue();
