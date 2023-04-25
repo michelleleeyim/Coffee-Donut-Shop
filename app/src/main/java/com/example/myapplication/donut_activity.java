@@ -18,6 +18,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class donut_activity extends AppCompatActivity {
@@ -59,8 +62,10 @@ public class donut_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donut);
         order = (Order) getIntent().getSerializableExtra("order");
+        orderList = (ArrayList<Order>) getIntent().getSerializableExtra("order list");
         donut_activity donut = new donut_activity();
         donut.setOrder(order);
+        donut.setOrderList(orderList);
         addToCart = findViewById(R.id.addToCart);
         donutImage = findViewById(R.id.donutImage);
         Spinner spinner = findViewById(R.id.spinnerDonut);
@@ -132,6 +137,8 @@ public class donut_activity extends AppCompatActivity {
     public void backClick(View view){
         Toast.makeText(this, "Main Menu", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("order", order);
+        intent.putExtra("order list", orderList);
         startActivity(intent);
     }
 

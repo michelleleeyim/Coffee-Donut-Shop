@@ -1,10 +1,12 @@
 package code;
 
+import java.io.Serializable;
+
 /**
  * A superclass and abstract class of all menu items including donut and coffee.
  * @author Stephanie Lin, Hyeseo Lee
  */
-public abstract class MenuItem {
+public abstract class MenuItem implements Serializable {
     public String name;
     public int quantity;
 

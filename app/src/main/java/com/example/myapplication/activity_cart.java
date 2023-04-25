@@ -22,7 +22,7 @@ public class activity_cart extends AppCompatActivity {
     private ArrayList<Order> placedOrderList;
     private Order basketOrder;
     private Order order;
-    private OrderViewModel orderViewModel;
+    //private OrderViewModel orderViewModel;
 
     public void setOrder(Order order) {
         this.basketOrder = order;
@@ -30,25 +30,25 @@ public class activity_cart extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
-
-
-        recyclerView = findViewById(R.id.shopping_cart);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
-        orderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
-
-        // Retrieve the current order from OrderViewModel
-        Order currentOrder = orderViewModel.getOrder().getValue();
-        Log.i("Cart Contents", currentOrder.toString());
-        if (currentOrder != null) {
-            itemList = currentOrder.OrderList();
-        } else {
-            itemList = new ArrayList<>();
-        }
-        cartAdapter = new CartAdapter(itemList, this);
-        recyclerView.setAdapter(cartAdapter);
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_cart);
+//
+//
+//        recyclerView = findViewById(R.id.shopping_cart);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//
+//        //orderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
+//
+//        // Retrieve the current order from OrderViewModel
+//        Order currentOrder = orderViewModel.getOrder().getValue();
+//        Log.i("Cart Contents", currentOrder.toString());
+//        if (currentOrder != null) {
+//            itemList = currentOrder.OrderList();
+//        } else {
+//            itemList = new ArrayList<>();
+//        }
+//        cartAdapter = new CartAdapter(itemList, this);
+//        recyclerView.setAdapter(cartAdapter);
     }
 }
