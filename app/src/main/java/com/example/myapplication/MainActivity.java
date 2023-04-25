@@ -1,9 +1,12 @@
 package com.example.myapplication;
 import code.*;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -27,27 +30,19 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton historyButton;
     private Order order = new Order();
     private ArrayList<Order> orderList  = new ArrayList<>();
+    private OrderViewModel orderViewModel;
 
-    /**
-     * setter method that assigns the passed in Order to the order variable.
-     * @param Order representing the current order basket.
-     */
-    public void setOrder(Order Order) {
-        this.order = Order;
-    }
-        public void setOrderList(ArrayList<Order> orderlist) {
-        orderList = orderlist;
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        orderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
+
     }
 
     public void donutClick(View view){
         Toast.makeText(this, "donut", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, donut_activity.class);
-        intent.putExtra("order", order);
         startActivity(intent);
     }
     public void coffeeClick(View view){
@@ -65,4 +60,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, activity_history.class);
         startActivity(intent);
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("MainActivity", "onResume() called");
+    }
+
 }

@@ -25,6 +25,7 @@
         <activity android:name=".activity_history" />
         <activity android:name=".activity_coffee" />
         <activity android:name=".activity_cart" />
+        <activity android:name=".CartAdapter" />
 
     </application>
 
