@@ -43,4 +43,5 @@ public class activity_cart extends AppCompatActivity {
         cartAdapter = new CartAdapter(itemList, this);
         recyclerView.setAdapter(cartAdapter);
     }
+    //hi
 }
