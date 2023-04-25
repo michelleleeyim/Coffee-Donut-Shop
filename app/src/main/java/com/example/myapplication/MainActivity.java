@@ -53,11 +53,13 @@ public class MainActivity extends AppCompatActivity {
     public void coffeeClick(View view){
         Toast.makeText(this, "coffee", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, activity_coffee.class);
+        intent.putExtra("order", order);
         startActivity(intent);
     }
     public void cartClick(View view){
         Toast.makeText(this, "cart", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, activity_cart.class);
+        intent.putExtra("order", order);
         startActivity(intent);
     }
     public void historyClick(View view){

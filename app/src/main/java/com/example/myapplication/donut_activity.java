@@ -21,10 +21,12 @@ import java.util.ArrayList;
 
 public class donut_activity extends AppCompatActivity {
     private int NONE = 0;
+    private int increment = 0;
     private int quantity;
     private Order order;
     private ImageView donutImage;
     private TextView donutQuantity;
+    private TextView subTotalDisplay;
     private RadioGroup donutType;
     private RadioButton yeastButton;
     private RadioButton cakeButton;
@@ -64,6 +66,7 @@ public class donut_activity extends AppCompatActivity {
         donutImage = findViewById(R.id.donutImage);
         Spinner spinner = findViewById(R.id.spinnerDonut);
         donutQuantity = findViewById(R.id.donutQuantity);
+        subTotalDisplay = findViewById(R.id.subTotalDisplay);
         ImageButton addButton = findViewById(R.id.addButton);
         ImageButton minusButton = findViewById(R.id.minusButton);
         donutType = findViewById(R.id.donutType);
@@ -157,6 +160,31 @@ public class donut_activity extends AppCompatActivity {
             Donut newDonut = new Donut("donut", selectedType,selectedFlavor,quantity);
             order.add(newDonut);
             Toast.makeText(getApplicationContext(), "Added to cart.", Toast.LENGTH_SHORT).show();
+            subTotalDisplay.setText(String.format("$%.2f", order.getTotalPrice()));
+        }
+    }
+
+    public void removeDonut(View view) {
+        if(selectedType == null){
+            Toast.makeText(getApplicationContext(), "Please select the donut type.", Toast.LENGTH_SHORT).show();
+        }else if(selectedFlavor == null){
+            Toast.makeText(getApplicationContext(),"Please select the donut flavor.",Toast.LENGTH_SHORT).show();
+        }else if (quantity == NONE) {
+            Toast.makeText(getApplicationContext(), "Please select a different quantity.", Toast.LENGTH_SHORT).show();
+        } else {
+            Donut newDonut = new Donut("donut", selectedType,selectedFlavor,quantity);
+            Donut currentItem = (Donut) order.returnItem(newDonut);
+            if (currentItem == null) {
+                Toast.makeText(getApplicationContext(), "No matching item.", Toast.LENGTH_SHORT).show();
+            } else {
+                if (currentItem.getQuantity() < quantity) {
+                    Toast.makeText(getApplicationContext(), "Enter quantity less than " + Integer.toString(currentItem.getQuantity() + increment), Toast.LENGTH_SHORT).show();
+                } else {
+                    order.remove(newDonut);
+                    subTotalDisplay.setText(String.format("$%.2f", order.getTotalPrice()));
+                    Toast.makeText(getApplicationContext(), "Removed from cart.", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
     }
 }

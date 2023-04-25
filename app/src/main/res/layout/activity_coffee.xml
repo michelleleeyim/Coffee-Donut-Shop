@@ -1,6 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".activity_coffee">
 
+    <CheckBox
+        android:id="@+id/frenchVanilla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="French Vanilla"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="359dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="32dp"
+        android:layout_height="28dp"
+        android:onClick="backClick"
+        app:srcCompat="@drawable/back"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coffee Shop"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="111dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="148dp"
+        android:layout_height="118dp"
+        app:srcCompat="@drawable/coffee"
+        tools:layout_editor_absoluteX="131dp"
+        tools:layout_editor_absoluteY="97dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Size: "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="241dp" />
+
+    <Spinner
+        android:id="@+id/spinnerCoffee"
+        android:layout_width="357dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="270dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Flavors:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="310dp" />
+
+    <CheckBox
+        android:id="@+id/sweetCream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sweet Cream"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="332dp" />
+
+    <CheckBox
+        android:id="@+id/irishCream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Irish Cream"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="389dp" />
+
+    <CheckBox
+        android:id="@+id/caramel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Caramel"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="419dp" />
+
+    <CheckBox
+        android:id="@+id/mocha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mocha"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="451dp" />
+
+    <ImageButton
+        android:id="@+id/coffeeMinusButton"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:srcCompat="@drawable/minus"
+        tools:layout_editor_absoluteX="115dp"
+        tools:layout_editor_absoluteY="519dp" />
+
+    <ImageButton
+        android:id="@+id/coffeeAddButton"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:srcCompat="@drawable/plus"
+        tools:layout_editor_absoluteX="254dp"
+        tools:layout_editor_absoluteY="519dp" />
+
+    <TextView
+        android:id="@+id/coffeeQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="200dp"
+        tools:layout_editor_absoluteY="527dp" />
+
+    <Button
+        android:id="@+id/addCoffee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addCoffee"
+        android:text="Add"
+        tools:layout_editor_absoluteX="238dp"
+        tools:layout_editor_absoluteY="587dp" />
+
+    <Button
+        android:id="@+id/removeCoffee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="removeCoffee"
+        android:text="Remove"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="586dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
