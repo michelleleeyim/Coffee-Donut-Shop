@@ -97,6 +97,22 @@ public class activity_coffee extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+    private Coffee createCoffee(){
+        String[] addIns = new String[5];
+        if(sweetCream.isChecked()){
+            addIns[0] = "Sweet Cream";
+        }if(frenchVanilla.isChecked()){
+            addIns[1] = "French Vanilla";
+        }if(irishCream.isChecked()){
+            addIns[2]= "Irish Cream";
+        }if(caramel.isChecked()){
+            addIns[3] = "Caramel";
+        }if(mocha.isChecked()){
+            addIns[4] = "Mocha";
+        }
+        Coffee coffee = new Coffee("Coffee", size, addIns, quantity);
+        return coffee;
+    }
 
     public void addCoffee(View view) {
         if (size == null) {
@@ -146,22 +162,6 @@ public class activity_coffee extends AppCompatActivity {
                 }
             }
         }
-    }
-    private Coffee createCoffee(){
-        String[] addIns = new String[5];
-        if(sweetCream.isChecked()){
-            addIns[0] = "Sweet Cream";
-        }if(frenchVanilla.isChecked()){
-            addIns[1] = "French Vanilla";
-        }if(irishCream.isChecked()){
-            addIns[2]= "Irish Cream";
-        }if(caramel.isChecked()){
-            addIns[3] = "Caramel";
-        }if(mocha.isChecked()){
-            addIns[4] = "Mocha";
-        }
-        Coffee coffee = new Coffee("Coffee", size, addIns, quantity);
-        return coffee;
     }
     //hi
 

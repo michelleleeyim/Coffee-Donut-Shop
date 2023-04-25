@@ -94,7 +94,7 @@ public class Coffee extends MenuItem {
                 return false;
             }
         }
-        return false;
+        return true;
     }
 
     /**
