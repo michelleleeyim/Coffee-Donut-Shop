@@ -54,6 +54,8 @@ public class donut_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donut);
+
+
         order = OrderSingle.getInstance().getOrder();
         donut_activity donut = new donut_activity();
         donut.setOrder(order);

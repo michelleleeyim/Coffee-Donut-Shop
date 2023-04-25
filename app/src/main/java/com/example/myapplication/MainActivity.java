@@ -1,9 +1,4 @@
 package com.example.myapplication;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
 import code.*;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,9 +8,13 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.example.myapplication.R;
+import com.example.myapplication.activity_cart;
+import com.example.myapplication.activity_coffee;
+import com.example.myapplication.activity_history;
+import com.example.myapplication.donut_activity;
 
-import code.Order;
+import java.util.ArrayList;
 
 /**
  * hey
