@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton coffeeButton;
     private ImageButton cartButton;
     private ImageButton historyButton;
-    private Order order = OrderSingle.getInstance().getOrder();
-    //private ArrayList<Order> orderList  = new ArrayList<>();
+    private Order order = new Order();
+    private ArrayList<Order> orderList  = new ArrayList<>();
 
     /**
      * setter method that assigns the passed in Order to the order variable.
@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
     public void setOrder(Order Order) {
         this.order = Order;
     }
-    //    public void setOrderList(ArrayList<Order> orderlist) {
-//        orderList = orderlist;
-//    }
+        public void setOrderList(ArrayList<Order> orderlist) {
+        orderList = orderlist;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     public void donutClick(View view){
         Toast.makeText(this, "donut", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, donut_activity.class);
-        intent.putExtra("order", OrderSingle.getInstance().getOrder());
+        intent.putExtra("order", order);
         startActivity(intent);
     }
     public void coffeeClick(View view){

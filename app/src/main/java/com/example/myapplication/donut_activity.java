@@ -20,7 +20,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class donut_activity extends AppCompatActivity {
-    private int quantity = 0;
+    private int NONE = 0;
+    private int quantity;
     private Order order;
     private ImageView donutImage;
     private TextView donutQuantity;
@@ -56,7 +57,7 @@ public class donut_activity extends AppCompatActivity {
         setContentView(R.layout.activity_donut);
 
 
-        order = OrderSingle.getInstance().getOrder();
+        order = (Order) getIntent().getSerializableExtra("order");
         donut_activity donut = new donut_activity();
         donut.setOrder(order);
         addToCart = findViewById(R.id.addToCart);
@@ -69,6 +70,7 @@ public class donut_activity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.donut_flavors, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        quantity = NONE;
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,9 +150,12 @@ public class donut_activity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please select the donut type.", Toast.LENGTH_SHORT).show();
         }else if(selectedFlavor == null){
             Toast.makeText(getApplicationContext(),"Please select the donut flavor.",Toast.LENGTH_SHORT).show();
-        }else{
-            Donut newDonut = new Donut("donut", selectedType,selectedFlavor,selectedQuantity);
-            this.order.add(newDonut);
+        }else if (quantity == NONE) {
+            Toast.makeText(getApplicationContext(), "Please select a different quantity.", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Donut newDonut = new Donut("donut", selectedType,selectedFlavor,quantity);
+            order.add(newDonut);
             Toast.makeText(getApplicationContext(), "Added to cart.", Toast.LENGTH_SHORT).show();
         }
     }
