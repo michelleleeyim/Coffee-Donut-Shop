@@ -22,13 +22,13 @@
         android:id="@+id/donutButton"
         android:layout_width="103dp"
         android:layout_height="90dp"
+        android:onClick="donutClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.129"
         app:srcCompat="@drawable/donut"
-        android:onClick="donutClick"
         tools:ignore="MissingConstraints" />
 
     <ImageButton

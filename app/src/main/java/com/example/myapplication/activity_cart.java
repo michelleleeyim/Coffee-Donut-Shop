@@ -1,4 +1,6 @@
 package com.example.myapplication;
 
-public class activity_cart {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class activity_cart extends AppCompatActivity {
 }
