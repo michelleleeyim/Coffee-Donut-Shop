@@ -95,25 +95,23 @@ public class activity_coffee extends AppCompatActivity {
     public void backClick(View view) {
         Toast.makeText(this, "Main Menu", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("order", order);
+        //intent.putExtra("order list", orderList);
         startActivity(intent);
     }
 
     public void addCoffee(View view) {
         if (size == null) {
-            // No size selected
             Toast.makeText(getApplicationContext(), "Please select a size", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (quantity == NONE) {
-            // No quantity selected
             Toast.makeText(getApplicationContext(), "Please select a quantity", Toast.LENGTH_SHORT).show();
             return;
         }
         Coffee newCoffee = createCoffee();
-        // Add coffee to order
         order.add(newCoffee);
-        // Show confirmation message
         Toast.makeText(getApplicationContext(), "Added " + quantity + " " + size + " coffee(s) to your order", Toast.LENGTH_SHORT).show();
         subTotalDisplay.setText(String.format("$%.2f", order.getTotalPrice()));
         Log.d("Cart Content", order.toString());
