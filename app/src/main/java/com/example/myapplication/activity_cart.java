@@ -78,8 +78,8 @@ public class activity_cart extends AppCompatActivity {
         intent.putExtra("order", order);
         intent.putExtra("order list", orderList);
         intent.putExtra("order placed", placeOrder);
-//        Order order = new Order();
-//        itemList = new ArrayList<MenuItem>();
+        Order order = new Order();
+        itemList = new ArrayList<MenuItem>();
         startActivity(intent);
     }
 }

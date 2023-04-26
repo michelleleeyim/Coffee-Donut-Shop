@@ -40,7 +40,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
             holder.orderItems.setText(order.toString());
             holder.orderPrice.setText("Price: " + String.format("$%.2f", order.priceWithTax()));
         }
-
+        //
         holder.orderCancelButton.setOnClickListener(view -> {
             int index = orderList.indexOf(order);
             orderList.set(index, new Order());
