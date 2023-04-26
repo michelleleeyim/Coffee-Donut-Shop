@@ -20,13 +20,14 @@ public class activity_cart extends AppCompatActivity {
     private CartAdapter cartAdapter;
     private RecyclerView recyclerView;
     private ArrayList<MenuItem> itemList;
-    private ArrayList<Order> placedOrderList;
+    private ArrayList<Order> orderList;
     private Order basketOrder;
     private Order order;
     private double tax = 0.06625;
     private TextView subTotal_order;
     private TextView tax_order;
     private TextView total_order;
+    private boolean placeOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,18 @@ public class activity_cart extends AppCompatActivity {
         Toast.makeText(this, "Main Menu", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("order", order);
-        //intent.putExtra("order list", orderList);
+        intent.putExtra("order list", orderList);
+        startActivity(intent);
+    }
+
+    public void placeOrder(View view) {
+        Toast.makeText(this, "history", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, activity_history.class);
+        intent.putExtra("order", order);
+        intent.putExtra("order list", orderList);
+        intent.putExtra("order placed", placeOrder);
+//        Order order = new Order();
+//        itemList = new ArrayList<MenuItem>();
         startActivity(intent);
     }
 }

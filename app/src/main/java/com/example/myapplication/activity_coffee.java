@@ -29,7 +29,6 @@ public class activity_coffee extends AppCompatActivity {
     private CheckBox caramel;
     private CheckBox mocha;
     private CheckBox frenchVanilla;
-    private String[] addIns = new String[5]; // array to store selected add-ins
 
 
 //    public void setOrder(Order Order) {

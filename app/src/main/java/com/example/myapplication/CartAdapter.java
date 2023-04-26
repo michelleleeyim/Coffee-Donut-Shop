@@ -50,9 +50,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
                 Coffee coffee = (Coffee) item;
                 holder.image.setImageResource(R.drawable.coffee);
                 // set add-ins
-                String[] addInsArray = coffee.getAddIns();
-                String addInsList = Arrays.toString(addInsArray);
-                holder.itemAddins.setText("Add-ins: " + addInsList.substring(1, addInsList.length() - 1));
+                //String[] addInsArray = coffee.getAddIns();
+                String addInsList = coffee.getAddInString();
+                holder.itemAddins.setText("Add-ins: " + addInsList.substring(0, addInsList.length() - 1));
 
                 // set size
                 holder.itemSize.setText("Size: " + coffee.getCupSize());

@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -15,7 +16,9 @@ import code.Order;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHolder> {
     private ArrayList<Order> orderList;
+    private Order order;
     private Context context;
+    private int increment = 1;
 
     public HistoryAdapter(ArrayList<Order> orderList, Context context) {
         this.orderList = orderList;
@@ -25,31 +28,43 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.history_row_layout, parent, false);
+        return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CartAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        Order order = orderList.get(position);
+        if (order != null) {
+            holder.orderNumber.setText("Order #: " + Integer.toString(position + increment));
+            holder.orderItems.setText(order.toString());
+            holder.orderPrice.setText("Price: " + String.format("$%.2f", order.priceWithTax()));
+        }
+
+        holder.orderCancelButton.setOnClickListener(view -> {
+            int index = orderList.indexOf(order);
+            orderList.set(index, new Order());
+            orderList.get(index).setOrderNumber(index + 1);
+            notifyDataSetChanged();
+        });
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return orderList.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        //fix it
-        TextView itemName, itemQuantity, itemAddins, itemSize;
-        Button removeItemButton;
+        TextView orderNumber, orderItems, orderPrice;
+        Button orderCancelButton;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemName = itemView.findViewById(R.id.item_name);
-            itemQuantity = itemView.findViewById(R.id.item_quantity);
-            itemAddins = itemView.findViewById(R.id.item_addins);
-            itemSize = itemView.findViewById(R.id.item_size);
-            removeItemButton = itemView.findViewById(R.id.remove_button);
+            orderNumber = itemView.findViewById(R.id.orderNumber);
+            orderItems = itemView.findViewById(R.id.orderItems);
+            orderPrice = itemView.findViewById(R.id.orderHistoryPrice);
+            orderCancelButton = itemView.findViewById(R.id.orderCancelButton);
         }
     }
 }

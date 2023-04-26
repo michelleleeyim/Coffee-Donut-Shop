@@ -72,9 +72,7 @@ public class Coffee extends MenuItem {
      * @return an array of the user's selection of add ins.
      */
     public String[] getAddIns() {
-        return Arrays.stream(this.addIns)
-                .filter(Objects::nonNull)
-                .toArray(String[]::new);
+        return this.addIns;
     }
 
     /**
@@ -82,11 +80,7 @@ public class Coffee extends MenuItem {
      * @return String representation of user's selection of add ins.
      */
     public String getAddInString() {
-        if (addIns == null || addIns.length == 0) {
-            return "";
-        } else {
-            return Arrays.toString(addIns).substring(1, Arrays.toString(addIns).length() - 1);
-        }
+       return this.addInString;
     }
 
     /**
@@ -99,9 +93,8 @@ public class Coffee extends MenuItem {
     public boolean compareAddIns(Coffee coffee) {
         String[] newAddIns = coffee.getAddIns();
         String[] currAddIns = this.addIns;
-        int numAddInsToCompare = Math.min(numOfAddIns, newAddIns.length);
-        for (int i = 0; i < numAddInsToCompare; i++) {
-            if (!newAddIns[i].equals(currAddIns[i])) {
+        for (int i = 0; i < numOfAddIns; i++) {
+            if (!Objects.equals(newAddIns[i], currAddIns[i])) {
                 return false;
             }
         }

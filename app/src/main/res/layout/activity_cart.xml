@@ -71,6 +71,7 @@
         android:layout_width="186dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:onClick="placeOrder"
         android:padding="16dp"
         android:text="Place Order"
         android:textAlignment="center"

@@ -45,10 +45,13 @@ public class Order implements Serializable {
     public int findItem(MenuItem item) {
         for (int i = 0; i < size; i++) {
             MenuItem currentItem = Order[i];
-            if (currentItem instanceof Coffee && item instanceof Coffee &&
-                    (((Coffee) currentItem).compareAddIns((Coffee) item) == true) && ((((Coffee) currentItem).getCupSize().equals((((Coffee) item).getCupSize()))))) {
-                return i;
-            } else if (currentItem instanceof Donut && item instanceof Donut) {
+            if (currentItem instanceof Coffee && item instanceof Coffee) {
+                if  ((((Coffee) currentItem).compareAddIns((Coffee) item) == true)) {
+                    if ((((Coffee) currentItem).getCupSize().equals((((Coffee) item).getCupSize())))) {
+                    return i;
+                    }
+                }
+                } else if (currentItem instanceof Donut && item instanceof Donut) {
                 if (((Donut) currentItem).getType().equals(((Donut) item).
                         getType()) &&
                         (((Donut) currentItem).getFlavor().equals(((Donut) item).

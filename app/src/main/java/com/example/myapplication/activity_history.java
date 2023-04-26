@@ -19,6 +19,7 @@ public class activity_history extends AppCompatActivity {
     private HistoryAdapter historyAdapter;
     private ArrayList<Order> orderList;
     private RecyclerView historyRecyclerView;
+    private boolean placedOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,17 +33,25 @@ public class activity_history extends AppCompatActivity {
 
         order = (Order) getIntent().getSerializableExtra("order");
         orderList = (ArrayList<Order>) getIntent().getSerializableExtra("order list");
+        placedOrder = getIntent().getBooleanExtra("order placed", false);
+        if (placedOrder == true) {
+            orderList.add(order);
+        }
         // Retrieve the current order from OrderViewModel
         Log.i("Cart Contents", order.toString());
 
         historyAdapter = new HistoryAdapter(orderList, this);
         historyRecyclerView.setAdapter(historyAdapter);
     }
-    private void orderHistoryBackClick(View view) {
+    public void orderHistoryBackClick(View view) {
         Toast.makeText(this, "Main Menu", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("order", order);
         intent.putExtra("order list", orderList);
         startActivity(intent);
+    }
+
+    public void exportData(View view) {
+
     }
 }
