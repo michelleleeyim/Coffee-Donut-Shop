@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.example.myapplication.R;
 import com.example.myapplication.activity_cart;
 import com.example.myapplication.activity_coffee;
-import com.example.myapplication.activity_history;
+//import com.example.myapplication.activity_history;
 import com.example.myapplication.donut_activity;
 
 import java.io.ByteArrayInputStream;
@@ -101,13 +101,13 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("order list", orderList);
         startActivity(intent);
     }
-    public void historyClick(View view){
-        Toast.makeText(this, "history", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, activity_history.class);
-        intent.putExtra("order", order);
-        intent.putExtra("order list", orderList);
-        startActivity(intent);
-    }
+//    public void historyClick(View view){
+//        Toast.makeText(this, "history", Toast.LENGTH_SHORT).show();
+//        Intent intent = new Intent(this, activity_history.class);
+//        intent.putExtra("order", order);
+//        intent.putExtra("order list", orderList);
+//        startActivity(intent);
+//    }
 //    @Override
 //    protected void onResume() {
 //        super.onResume();

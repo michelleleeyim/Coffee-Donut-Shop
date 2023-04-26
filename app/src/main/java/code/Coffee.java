@@ -95,16 +95,19 @@ public class Coffee extends MenuItem {
      * @return boolean value, true if the add ins match with the current add ins
      * of current Coffee object, false otherwise.
      */
+
     public boolean compareAddIns(Coffee coffee) {
         String[] newAddIns = coffee.getAddIns();
         String[] currAddIns = this.addIns;
-        for (int i = 0; i < numOfAddIns; i++) {
-            if (newAddIns[i] != currAddIns[i]) {
+        int numAddInsToCompare = Math.min(numOfAddIns, newAddIns.length);
+        for (int i = 0; i < numAddInsToCompare; i++) {
+            if (!newAddIns[i].equals(currAddIns[i])) {
                 return false;
             }
         }
         return true;
     }
+
 
     /**
      * calculates the item's price with the number of items ordered.

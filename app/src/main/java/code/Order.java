@@ -7,10 +7,10 @@ import java.util.*;
 
 public class Order implements Serializable {
     private MenuItem[] Order;
-    private int InitialCapacity = 4;
+    private int InitialCapacity = 1;
     private int size;
     private int EMPTY = 0;
-    private int GrowthRate = 4;
+    private int GrowthRate = 1;
     private double totalPrice;
     private int orderNumber;
     private double tax = 0.06625;
