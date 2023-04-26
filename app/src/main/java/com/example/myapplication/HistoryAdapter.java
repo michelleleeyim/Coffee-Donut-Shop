@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView orderNumber, orderItems, orderPrice;
-        Button orderCancelButton;
+        AppCompatImageButton orderCancelButton;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
