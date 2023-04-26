@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -39,10 +41,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             // set item name and quantity
             holder.itemName.setText(item.getName());
             holder.itemQuantity.setText("Quantity: " + item.getQuantity());
+            holder.image.setImageResource(R.drawable.donut);
 
             if (item instanceof Coffee) {
                 Coffee coffee = (Coffee) item;
-
+                holder.image.setImageResource(R.drawable.coffee);
                 // set add-ins
                 String[] addInsArray = coffee.getAddIns();
                 String addInsList = Arrays.toString(addInsArray);
@@ -50,7 +53,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
                 // set size
                 holder.itemSize.setText("Size: " + coffee.getCupSize());
-            } else {
+            }
+            else {
                 holder.itemAddins.setText("");
                 holder.itemSize.setText("");
             }
@@ -70,7 +74,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView itemName, itemQuantity, itemAddins, itemSize;
-        Button removeItemButton;
+        AppCompatImageButton removeItemButton;
+        ImageView image;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -79,6 +84,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             itemAddins = itemView.findViewById(R.id.item_addins);
             itemSize = itemView.findViewById(R.id.item_size);
             removeItemButton = itemView.findViewById(R.id.remove_button);
+            image = itemView.findViewById(R.id.image);
         }
     }
 }

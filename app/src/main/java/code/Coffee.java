@@ -1,5 +1,8 @@
 package code;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * Coffee subclass of MenuItem, holds the coffee attributes
  * @author Stephanie Lin, Hyeseo Lee
@@ -69,7 +72,9 @@ public class Coffee extends MenuItem {
      * @return an array of the user's selection of add ins.
      */
     public String[] getAddIns() {
-        return this.addIns;
+        return Arrays.stream(this.addIns)
+                .filter(Objects::nonNull)
+                .toArray(String[]::new);
     }
 
     /**
@@ -77,7 +82,11 @@ public class Coffee extends MenuItem {
      * @return String representation of user's selection of add ins.
      */
     public String getAddInString() {
-        return this.addInString;
+        if (addIns == null || addIns.length == 0) {
+            return "";
+        } else {
+            return Arrays.toString(addIns).substring(1, Arrays.toString(addIns).length() - 1);
+        }
     }
 
     /**

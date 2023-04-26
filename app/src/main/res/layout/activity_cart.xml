@@ -1,32 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/cart_title"
-        android:text="Cart"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
         android:padding="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_gravity="center_horizontal"
+        android:text="Cart"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/shopping_cart"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="453dp"
         android:layout_weight="1"
         android:padding="16dp" />
 
     <Button
         android:id="@+id/place_order_button"
-        android:text="Place Order"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:layout_width="186dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:padding="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:text="Place Order"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="46dp"
+        android:layout_height="28dp"
+        app:srcCompat="@drawable/back" />
 
 </LinearLayout>
