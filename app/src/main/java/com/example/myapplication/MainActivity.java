@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         } if (intent.hasExtra("order list")) {
             orderList = (ArrayList<Order>) intent.getSerializableExtra("order list");
         } else {
-            orderList = new ArrayList<>();
+            orderList = new ArrayList<Order>();
         }
     }
 

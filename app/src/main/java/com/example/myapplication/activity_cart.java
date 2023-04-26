@@ -44,6 +44,7 @@ public class activity_cart extends AppCompatActivity {
 
 
         order = (Order) getIntent().getSerializableExtra("order");
+        orderList = (ArrayList<Order>) getIntent().getSerializableExtra("order list");
         // Retrieve the current order from OrderViewModel
         Log.i("Cart Contents", order.toString());
         if (order != null) {
