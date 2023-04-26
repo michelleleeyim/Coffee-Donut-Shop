@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -74,12 +76,23 @@ public class activity_cart extends AppCompatActivity {
     }
 
     public void placeOrder(View view) {
-        Toast.makeText(this, "history", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, activity_history.class);
-        intent.putExtra("order", order);
-        intent.putExtra("order list", orderList);
-        intent.putExtra("order placed", placeOrder);
-        //Order order = new Order();
-        startActivity(intent);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Confirm Order");
+        builder.setMessage("Are you sure you want to place this order?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getApplicationContext(), "Order placed", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), activity_history.class);
+                intent.putExtra("order", order);
+                intent.putExtra("order list", orderList);
+                intent.putExtra("order placed", placeOrder);
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton("Cancel", null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
+
 }
