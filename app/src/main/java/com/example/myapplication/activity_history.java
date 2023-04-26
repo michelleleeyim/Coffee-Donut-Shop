@@ -39,6 +39,7 @@ public class activity_history extends AppCompatActivity {
         placedOrder = getIntent().getBooleanExtra("order placed", false);
         if (placedOrder == true) {
             orderList.add(order);
+            order = new Order();
         }
         // Retrieve the current order from OrderViewModel
         String history = "";
