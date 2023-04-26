@@ -1,18 +1,19 @@
 package com.example.myapplication;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import code.Order;
-import code.OrderSingle;
 import code.*;
 
 public class activity_cart extends AppCompatActivity {
@@ -22,15 +23,24 @@ public class activity_cart extends AppCompatActivity {
     private ArrayList<Order> placedOrderList;
     private Order basketOrder;
     private Order order;
+    private double tax = 0.06625;
+    private TextView subTotal_order;
+    private TextView tax_order;
+    private TextView total_order;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-
+        itemList = new ArrayList<>(); // Initialize itemList with an empty list
         recyclerView = findViewById(R.id.shopping_cart);
+        subTotal_order = findViewById(R.id.subtotal_order);
+        tax_order = findViewById(R.id.tax_order);
+        total_order = findViewById(R.id.total_order);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
         order = (Order) getIntent().getSerializableExtra("order");
         // Retrieve the current order from OrderViewModel
@@ -40,8 +50,24 @@ public class activity_cart extends AppCompatActivity {
         } else {
             itemList = new ArrayList<>();
         }
-        cartAdapter = new CartAdapter(itemList, this);
+        cartAdapter = new CartAdapter(itemList, this,order);
         recyclerView.setAdapter(cartAdapter);
+        updatePrice();
     }
-    //hi
+    public void updatePrice() {
+        double subTotal = order.getTotalPrice();
+        double salesTax = subTotal * tax;
+        double total = order.priceWithTax();
+
+        subTotal_order.setText("Total: "+ String.format("$%.2f", subTotal));
+        tax_order.setText("Tax:"+String.format("$%.2f", salesTax));
+        total_order.setText("Total:"+String.format("$%.2f",total));
+    }
+    public void backClick(View view){
+        Toast.makeText(this, "Main Menu", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("order", order);
+        //intent.putExtra("order list", orderList);
+        startActivity(intent);
+    }
 }

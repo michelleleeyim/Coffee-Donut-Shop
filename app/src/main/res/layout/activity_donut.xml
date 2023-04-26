@@ -58,6 +58,7 @@
 
     <ImageButton
         android:id="@+id/addButton"
+        android:background="@android:color/transparent"
         android:layout_width="43dp"
         android:layout_height="45dp"
         android:layout_marginStart="248dp"
@@ -69,6 +70,7 @@
 
     <ImageButton
         android:id="@+id/minusButton"
+        android:background="@android:color/transparent"
         android:layout_width="45dp"
         android:layout_height="45dp"
         app:layout_constraintBottom_toBottomOf="@+id/donutQuantity"
@@ -165,6 +167,7 @@
 
     <ImageButton
         android:id="@+id/imageButton4"
+        android:background="@android:color/transparent"
         android:layout_width="32dp"
         android:layout_height="28dp"
         android:onClick="backClick"

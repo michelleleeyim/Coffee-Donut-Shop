@@ -19,12 +19,15 @@ import code.*;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> {
 
-    private ArrayList<MenuItem> itemList;
+    ArrayList<MenuItem> itemList = new ArrayList<>();
     private Context context;
+    private Order order;
 
-    public CartAdapter(ArrayList<MenuItem> itemList, Context context) {
+
+    public CartAdapter(ArrayList<MenuItem> itemList, Context context, Order order) {
         this.itemList = itemList;
         this.context = context;
+        this.order = order;
     }
 //hi
     @NonNull
@@ -64,12 +67,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         holder.removeItemButton.setOnClickListener(view -> {
             itemList.remove(position);
             notifyDataSetChanged();
+            order.remove(item);
         });
     }
 
     @Override
     public int getItemCount() {
-        return itemList == null ? 0 : itemList.size();
+        return itemList.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
