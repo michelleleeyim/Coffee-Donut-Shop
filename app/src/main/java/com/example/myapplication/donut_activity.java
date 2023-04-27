@@ -192,7 +192,7 @@ public class donut_activity extends AppCompatActivity implements DonutAdapter.On
             Donut newDonut = new Donut("donut", selectedType, selectedFlavor, quantity);
             order.add(newDonut);
             Toast.makeText(getApplicationContext(), "Added to cart.", Toast.LENGTH_SHORT).show();
-            subTotalDisplay.setText(String.format("$%.2f", order.getTotalPrice()));
+            subTotalDisplay.setText(String.format("%.2f", order.getTotalPrice()));
         }
     }
 
@@ -223,7 +223,7 @@ public class donut_activity extends AppCompatActivity implements DonutAdapter.On
                             Toast.LENGTH_SHORT).show();
                 } else {
                     order.remove(newDonut);
-                    subTotalDisplay.setText(String.format("$%.2f", order.getTotalPrice()));
+                    subTotalDisplay.setText(String.format("%.2f", order.getTotalPrice()));
                     Toast.makeText(getApplicationContext(), "Removed from cart.",
                             Toast.LENGTH_SHORT).show();
                 }
