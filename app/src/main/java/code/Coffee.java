@@ -1,6 +1,5 @@
 package code;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -18,7 +17,6 @@ public class Coffee extends MenuItem {
     private double TALL_PRICE = 2.29;
     private double GRANDE_PRICE = 2.69;
     private double VENTI_PRICE=3.09;
-    private double NONE = 0;
     private int numOfAddIns = 5;
 
     /**
@@ -89,7 +87,6 @@ public class Coffee extends MenuItem {
      * @return boolean value, true if the add ins match with the current add ins
      * of current Coffee object, false otherwise.
      */
-
     public boolean compareAddIns(Coffee coffee) {
         String[] newAddIns = coffee.getAddIns();
         String[] currAddIns = this.addIns;
@@ -100,7 +97,6 @@ public class Coffee extends MenuItem {
         }
         return true;
     }
-
 
     /**
      * calculates the item's price with the number of items ordered.
@@ -142,7 +138,5 @@ public class Coffee extends MenuItem {
         }
         return returnString;
     }
-
-
 
 }

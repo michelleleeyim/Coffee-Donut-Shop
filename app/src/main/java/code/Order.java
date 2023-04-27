@@ -1,11 +1,12 @@
 package code;
 
-import android.view.Menu;
-
 import java.io.Serializable;
 import java.util.*;
 
-
+/**
+ * Order class that holds items added to the order cart and information about them, including price.
+ * @author Stephanie Lin, Hyeseo Lee
+ */
 public class Order implements Serializable {
     private MenuItem[] Order;
     private int InitialCapacity = 1;

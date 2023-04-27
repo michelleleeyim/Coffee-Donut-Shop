@@ -73,7 +73,6 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.MyViewHolder
             this.onDonutClickListener = onDonutClickListener;
             itemView.setOnClickListener(this);
         }
-
         @Override
         public void onClick(View v) {
             onDonutClickListener.onDonutClick(getAdapterPosition());

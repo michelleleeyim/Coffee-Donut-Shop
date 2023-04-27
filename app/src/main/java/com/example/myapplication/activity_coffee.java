@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
@@ -17,6 +16,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/**
+ * Class for Coffee View that allows user to place coffee orders.
+ * @author Stephanie Lin, Hyeseo Lee
+ */
 public class activity_coffee extends AppCompatActivity {
     private int NONE = 0;
     private int ADD_IN_SIZE = 5;
@@ -33,6 +36,13 @@ public class activity_coffee extends AppCompatActivity {
     private CheckBox mocha;
     private CheckBox frenchVanilla;
 
+    /**
+     *  This method initializes various views, widgets, spinner, button clicks, and sets text.
+     *  It also gets data from the intent that started the activity.
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +67,7 @@ public class activity_coffee extends AppCompatActivity {
                                        int position, long id) {
                 size = parentView.getItemAtPosition(position).toString();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
             }
@@ -135,7 +146,6 @@ public class activity_coffee extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Added " + quantity + " " + size
                 + " coffee(s) to your order", Toast.LENGTH_SHORT).show();
         subTotalDisplay.setText(String.format("$%.2f", order.getTotalPrice()));
-        Log.d("Cart Content", order.toString());
     }
 
     public void removeCoffee(View view) {
@@ -155,7 +165,7 @@ public class activity_coffee extends AppCompatActivity {
             if (currentItem != null) {
                 if (currentItem.getQuantity() < quantity) {
                     Toast.makeText(getApplicationContext(), "Enter quantity less than "
-                            + Integer.toString(currentItem.getQuantity() + INCREMENT),
+                                    + Integer.toString(currentItem.getQuantity() + INCREMENT),
                             Toast.LENGTH_SHORT).show();
                 } else {
                     order.remove(currentItem);

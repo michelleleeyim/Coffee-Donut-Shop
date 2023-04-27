@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +17,11 @@ import java.util.ArrayList;
 import code.Order;
 import code.*;
 
+/**
+ * Class for the order cart that holds items that have been added to cart.
+ * Allows user functionalities to cancel orders.
+ * @author Stephanie Lin, Hyeseo Lee
+ */
 public class activity_cart extends AppCompatActivity {
     private CartAdapter cartAdapter;
     private RecyclerView recyclerView;
@@ -86,7 +90,7 @@ public class activity_cart extends AppCompatActivity {
     }
 
     /**
-     *  creates an alert dialog to confirm order and launches a new activity upon confirmation.
+     * creates an alert dialog to confirm order and launches a new activity upon confirmation.
      * @param view UI element that triggered the method call.
      */
     public void placeOrder(View view) {
