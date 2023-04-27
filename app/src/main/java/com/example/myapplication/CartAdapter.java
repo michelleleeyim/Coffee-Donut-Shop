@@ -42,7 +42,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             // set item name and quantity
             holder.itemName.setText(item.getName());
             holder.itemQuantity.setText("Quantity: " + item.getQuantity());
-            holder.image.setImageResource(R.drawable.donut);
+            holder.image.setImageResource(R.drawable.bag);
 
             if (item instanceof Coffee) {
                 Coffee coffee = (Coffee) item;

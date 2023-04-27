@@ -1,16 +1,48 @@
 <resources>
     <string name="app_name">RUCafe</string>
-    <string-array name="donut_flavors">
-        <item>Plain</item>
-        <item>Chocolate</item>
-        <item>Strawberry</item>
-        <item>Boston Cream</item>
-        <item>Powdered Sugar</item>
-    </string-array>
     <string-array name="coffee_size">
         <item>Short</item>
         <item>Tall</item>
         <item>Grande</item>
         <item>Venti</item>
     </string-array>
+    <string name="place_order_button_text">Place Order</string>
+    <string name="total_text">Total: </string>
+    <string name="tax_text">Tax: </string>
+    <string name="subtotal_text">Subtotal: $</string>
+    <string name="cart_text">Cart</string>
+    <string name="frenchVanilla_text">French Vanilla</string>
+    <string name="coffeeShop_text">Coffee Shop</string>
+    <string name="size_text">Select Size: </string>
+    <string name="flavor_text">Select Flavor: </string>
+    <string name="sweetCream_text">Sweet Cream</string>
+    <string name="irish_text">Irish Cream</string>
+    <string name="caramel_text">Caramel</string>
+    <string name="mocha_text">Mocha</string>
+    <string name="zero">0</string>
+    <string name="add_text">Add</string>
+    <string name="remove_text">Remove</string>
+    <string name="donutShop_text">Donut Shop</string>
+    <string name="selectType_text">Select Type: </string>
+    <string name="yeast_text">Yeast</string>
+    <string name="cake_text">Cake</string>
+    <string name="donutHole_text">Donut Hole</string>
+    <string name="history_text">Order History</string>
+    <string name="export_text">Export</string>
+    <string name="cafe_text">RU Cafe</string>
+    <string name="name_text">Name</string>
+    <string name="order_text">Order #: </string>
+    <string name="item_text">Items: </string>
+    <string name="price_text">Price: </string>
+    <string name="addins_text">Add-Ins</string>
+    <string name="quantity_text">Quantity</string>
+    <string name="size1_text">Size: </string>
+
+
+
+
+
+
+
+
 </resources>

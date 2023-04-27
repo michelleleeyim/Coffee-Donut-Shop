@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import code.*;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +29,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class donut_activity extends AppCompatActivity {
+public class donut_activity extends AppCompatActivity implements DonutAdapter.OnDonutClickListener {
     private int NONE = 0;
     private int increment = 0;
     private int quantity;
@@ -49,28 +50,12 @@ public class donut_activity extends AppCompatActivity {
     private DonutAdapter donutAdapter;
     private RecyclerView recyclerView;
 
-    /**
-     * setter method that assigns the passed in Order to the order variable.
-     * @param Order representing the current order basket.
-     */
-    public void setOrder(Order Order) {
-        this.order = Order;
-    }
-
-    /**
-     * Setter method that assigns passed in ArrayList of Orders to orderList.
-     * @param orderlist representing the ArrayList to update orderList.
-     */
-    public void setOrderList(ArrayList<Order> orderlist) {
-        orderList = orderlist;
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donut);
         order = (Order) getIntent().getSerializableExtra("order");
         orderList = (ArrayList<Order>) getIntent().getSerializableExtra("order list");
-        //donut_activity donut = new donut_activity();
         addToCart = findViewById(R.id.addToCart);
         donutQuantity = findViewById(R.id.donutQuantity);
         subTotalDisplay = findViewById(R.id.subTotalDisplay);
@@ -79,9 +64,6 @@ public class donut_activity extends AppCompatActivity {
         donutType = findViewById(R.id.donutType);
         recyclerView = findViewById(R.id.donut_flavor);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
-
         quantity = NONE;
         ArrayList<String> donutFlavors = new ArrayList<>();
         donutFlavors.add("Plain Donut");
@@ -90,16 +72,14 @@ public class donut_activity extends AppCompatActivity {
         donutFlavors.add("Glazed Donut");
         donutFlavors.add("Cookie Monster Donut");
         donutFlavors.add("Cherry Donut");
-        donutFlavors.add("Boston cream Sugar");
-        donutFlavors.add("Powdered Sugar");
-
-        donutAdapter = new DonutAdapter(donutFlavors, this);
+        donutFlavors.add("Boston Cream Donut");
+        donutFlavors.add("Powdered Sugar Donut");
+        donutFlavors.add("Jelly Donut");
+        donutAdapter = new DonutAdapter(donutFlavors, this, this);
         recyclerView.setAdapter(donutAdapter);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                increaseQuant();
-            }
+            public void onClick(View v) { increaseQuant(); }
         });
         minusButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,32 +88,18 @@ public class donut_activity extends AppCompatActivity {
             }
         });
         donutQuantity.setText(String.valueOf(quantity));
-
         donutType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 donutRadioGroup(donutType.findViewById(checkedId));
             }
         });
-//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                selectedFlavor = parent.getItemAtPosition(position).toString();
-//                if (selectedFlavor.equals("Plain")) {
-//                    donutImage.setImageResource(R.drawable.plain);
-//                } else if (selectedFlavor.equals("Chocolate")) {
-//                    donutImage.setImageResource(R.drawable.choco);
-//                } else if (selectedFlavor.equals("Strawberry")) {
-//                    donutImage.setImageResource(R.drawable.strawberry);
-//                } else if (selectedFlavor.equals("Powdered Sugar")) {
-//                    donutImage.setImageResource(R.drawable.yeast);
-//                }
-//                else if (selectedFlavor.equals("Boston Cream")) {
-//                    donutImage.setImageResource(R.drawable.boston);
-//                }
-//            }
     }
-
+  @Override
+    public void onDonutClick(int position) {
+        selectedFlavor = ((DonutAdapter) recyclerView.getAdapter()).getItemList().get(position);
+      Toast.makeText(this, "You selected " + selectedFlavor + " flavor.", Toast.LENGTH_SHORT).show();
+  }
     private void increaseQuant(){
         quantity++;
         donutQuantity.setText(String.valueOf(quantity));
@@ -151,19 +117,17 @@ public class donut_activity extends AppCompatActivity {
         intent.putExtra("order list", orderList);
         startActivity(intent);
     }
-
-    private void donutRadioGroup(View view){
+    private void donutRadioGroup(View view) {
         boolean selected = ((RadioButton) view).isChecked();
-        if(view.getId() == R.id.yeastButton && selected){
+        if (view.getId() == R.id.yeastButton && selected) {
             selectedType = "Yeast";
-        }else if(view.getId()==R.id.cakeButton && selected){
+        } else if (view.getId() == R.id.cakeButton && selected) {
             selectedType = "Cake";
-        }else{
+        } else {
             selectedType = "Donut Hole";
         }
         Toast.makeText(this, selectedType, Toast.LENGTH_SHORT).show();
     }
-
     public void addDonut(View view){
         if(selectedType == null){
             Toast.makeText(getApplicationContext(), "Please select the donut type.", Toast.LENGTH_SHORT).show();
@@ -180,7 +144,6 @@ public class donut_activity extends AppCompatActivity {
             subTotalDisplay.setText(String.format("$%.2f", order.getTotalPrice()));
         }
     }
-
     public void removeDonut(View view) {
         if(selectedType == null){
             Toast.makeText(getApplicationContext(), "Please select the donut type.", Toast.LENGTH_SHORT).show();

@@ -22,21 +22,21 @@
             android:layout_width="37dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Order #: " />
+            android:text="@string/order_text" />
 
         <TextView
             android:id="@+id/orderItems"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Items:" />
+            android:text="@string/item_text" />
 
         <TextView
             android:id="@+id/orderHistoryPrice"
             android:layout_width="46dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Price:" />
+            android:text="@string/price_text" />
 
         <ImageButton
             android:id="@+id/orderCancelButton"

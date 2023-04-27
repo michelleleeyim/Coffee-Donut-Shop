@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:padding="16dp"
-            android:text="Cart"
+            android:text="@string/cart_text"
             android:textAlignment="textStart"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -51,19 +51,19 @@
             android:id="@+id/subtotal_order"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Subtotal: " />
+            android:text="@string/subtotal_text" />
 
         <TextView
             android:id="@+id/tax_order"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tax: " />
+            android:text="@string/tax_text" />
 
         <TextView
             android:id="@+id/total_order"
             android:layout_width="377dp"
             android:layout_height="wrap_content"
-            android:text="Total: " />
+            android:text="@string/total_text" />
     </LinearLayout>
 
     <Button
@@ -73,7 +73,7 @@
         android:layout_gravity="center_horizontal"
         android:onClick="placeOrder"
         android:padding="16dp"
-        android:text="Place Order"
+        android:text="@string/place_order_button_text"
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold" />
