@@ -182,7 +182,7 @@ public class activity_coffee extends AppCompatActivity {
         order.add(newCoffee);
         Toast.makeText(getApplicationContext(), "Added " + quantity + " " + size
                 + " coffee(s) to your order", Toast.LENGTH_SHORT).show();
-        subTotalDisplay.setText(String.format("$%.2f", order.getTotalPrice()));
+        subTotalDisplay.setText(String.format("%.2f", order.getTotalPrice()));
     }
 
     /**
@@ -210,7 +210,7 @@ public class activity_coffee extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 } else {
                     order.remove(currentItem);
-                    subTotalDisplay.setText(String.format("$%.2f", order.getTotalPrice()));
+                    subTotalDisplay.setText(String.format("%.2f", order.getTotalPrice()));
                     Toast.makeText(getApplicationContext(), "Removed from cart.",
                             Toast.LENGTH_SHORT).show();
                 }
