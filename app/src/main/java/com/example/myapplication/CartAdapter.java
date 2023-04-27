@@ -15,19 +15,39 @@ import java.util.ArrayList;
 
 import code.*;
 
+/**
+ * Defines a RecyclerView adapter for displaying a list of menu items in a shopping cart.
+ * Allows user to remove items, and updates total price.
+ * @authors Stephanie Lin, Hyeseo Lee
+ */
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> {
 
-    ArrayList<MenuItem> itemList = new ArrayList<>();
+    ArrayList<MenuItem> itemList;
     private Context context;
     private Order order;
 
+    private int increment = 1;
+    private int start = 0;
 
+    /**
+     *constructor for the CartAdapter class.
+     * @param itemList ArrayList storing items in order.
+     * @param context  current state of the application.
+     * @param order The order object storing information of items in shopping cart.
+     */
     public CartAdapter(ArrayList<MenuItem> itemList, Context context, Order order) {
         this.itemList = itemList;
         this.context = context;
         this.order = order;
     }
-//hi
+
+    /**
+     * Defines a method that creates a new instance of MyViewHolder.
+     * @param parent The ViewGroup into which the new View will be added after it is bound to
+     *               an adapter position.
+     * @param viewType The view type of the new View.
+     * @return MyViewHolder that was created by inflating layout from specified XML file.
+     */
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,11 +55,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         return new MyViewHolder(view);
     }
 
+    /**
+     * Binds the data from the MenuItem object to the corresponding views in the RecyclerView.
+     * @param holder The ViewHolder which should be updated to represent the contents of the
+     *        item at the given position in the data set.
+     * @param position The position of the item within the adapter's data set.
+     */
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         MenuItem item = itemList.get(position);
-        if(item!=null){
-            // set item name and quantity
+        if (item != null) {
             holder.itemName.setText(item.getName());
             holder.itemQuantity.setText("Quantity: " + item.getQuantity());
             holder.image.setImageResource(R.drawable.bag);
@@ -47,39 +72,46 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             if (item instanceof Coffee) {
                 Coffee coffee = (Coffee) item;
                 holder.image.setImageResource(R.drawable.coffee);
-                // set add-ins
-                //String[] addInsArray = coffee.getAddIns();
                 String addInsList = coffee.getAddInString();
-                holder.itemAddins.setText("Add-ins: " + addInsList.substring(0, addInsList.length() - 1));
-
-                // set size
+                holder.itemAddins.setText("Add-ins: " + addInsList.substring(start,
+                        addInsList.length() - increment));
                 holder.itemSize.setText("Size: " + coffee.getCupSize());
-            }
-            else {
+            } else {
                 holder.itemAddins.setText("");
                 holder.itemSize.setText("");
             }
         }
 
-        // set remove button onClickListener
         holder.removeItemButton.setOnClickListener(view -> {
             itemList.remove(position);
             notifyDataSetChanged();
             order.remove(item);
-            ((activity_cart)context).updatePrice();
+            ((activity_cart) context).updatePrice();
         });
     }
 
+    /**
+     * Retrievces the number of items in order cart.
+     * @return Integer value of number of items in order cart.
+     */
     @Override
     public int getItemCount() {
         return itemList.size();
     }
 
+    /**
+     * MyViewHolder class used to hold the views of each item in the RecyclerView.
+     * @authors Stephanie Lin, Hyeseo Lee
+     */
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView itemName, itemQuantity, itemAddins, itemSize;
         AppCompatImageButton removeItemButton;
         ImageView image;
 
+        /**
+         * Initializes the views of a single item's layout in the RecyclerView.
+         * @param itemView root view of the item layout inflated in onCreateViewHolder method.
+         */
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             itemName = itemView.findViewById(R.id.donut_flavor);
