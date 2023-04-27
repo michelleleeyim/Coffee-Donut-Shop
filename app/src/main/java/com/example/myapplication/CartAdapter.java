@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,7 +12,6 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import code.*;
 
@@ -84,12 +82,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemName = itemView.findViewById(R.id.item_name);
+            itemName = itemView.findViewById(R.id.donut_flavor);
             itemQuantity = itemView.findViewById(R.id.item_quantity);
             itemAddins = itemView.findViewById(R.id.item_addins);
             itemSize = itemView.findViewById(R.id.item_size);
             removeItemButton = itemView.findViewById(R.id.remove_button);
-            image = itemView.findViewById(R.id.image);
+            image = itemView.findViewById(R.id.donut_image);
         }
     }
 }

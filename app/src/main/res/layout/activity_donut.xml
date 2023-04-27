@@ -6,28 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".donut_activity">
 
-    <Spinner
-        android:id="@+id/spinnerDonut"
-        android:layout_width="357dp"
-        android:layout_height="wrap_content"
-        android:entries="@array/donut_flavors"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.59" />
-
-    <ImageView
-        android:id="@+id/donutImage"
-        android:layout_width="155dp"
-        android:layout_height="152dp"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerDonut"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.314"
-        app:srcCompat="@drawable/plain" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -87,9 +65,18 @@
         android:layout_height="149dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.418">
+        app:layout_constraintVertical_bias="0.116">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Type: "
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/yeastButton"
@@ -111,32 +98,16 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Type: "
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/donutType"
-        app:layout_constraintEnd_toEndOf="@+id/donutType"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/donutType"
-        app:layout_constraintTop_toBottomOf="@+id/donutImage"
-        app:layout_constraintVertical_bias="0.058" />
-
-    <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select Flavor:"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerDonut"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/donutType"
-        app:layout_constraintVertical_bias="0.431" />
+        app:layout_constraintTop_toBottomOf="@+id/donutType" />
 
     <Button
         android:id="@+id/addToCart"
@@ -202,5 +173,17 @@
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/removeFromCart"
         app:layout_constraintVertical_bias="0.366" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/donut_flavor"
+        android:layout_width="345dp"
+        android:layout_height="217dp"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

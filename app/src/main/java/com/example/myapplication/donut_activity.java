@@ -1,11 +1,15 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import code.*;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,6 +26,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 public class donut_activity extends AppCompatActivity {
     private int NONE = 0;
@@ -41,6 +46,8 @@ public class donut_activity extends AppCompatActivity {
 
     private int selectedQuantity;
     private ArrayList<Order> orderList;
+    private DonutAdapter donutAdapter;
+    private RecyclerView recyclerView;
 
     /**
      * setter method that assigns the passed in Order to the order variable.
@@ -65,17 +72,29 @@ public class donut_activity extends AppCompatActivity {
         orderList = (ArrayList<Order>) getIntent().getSerializableExtra("order list");
         donut_activity donut = new donut_activity();
         addToCart = findViewById(R.id.addToCart);
-        donutImage = findViewById(R.id.donutImage);
-        Spinner spinner = findViewById(R.id.spinnerDonut);
         donutQuantity = findViewById(R.id.donutQuantity);
         subTotalDisplay = findViewById(R.id.subTotalDisplay);
         ImageButton addButton = findViewById(R.id.addButton);
         ImageButton minusButton = findViewById(R.id.minusButton);
         donutType = findViewById(R.id.donutType);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.donut_flavors, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        recyclerView = findViewById(R.id.donut_flavor);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+
         quantity = NONE;
+        ArrayList<String> donutFlavors = new ArrayList<>();
+        donutFlavors.add("Plain Donut");
+        donutFlavors.add("Chocolate Donut");
+        donutFlavors.add("Strawberry Donut");
+        donutFlavors.add("Glazed Donut");
+        donutFlavors.add("Cookie Monster Donut");
+        donutFlavors.add("Cherry Donut");
+        donutFlavors.add("Boston cream Sugar");
+        donutFlavors.add("Powdered Sugar");
+
+        donutAdapter = new DonutAdapter(donutFlavors, this);
+        recyclerView.setAdapter(donutAdapter);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,30 +115,23 @@ public class donut_activity extends AppCompatActivity {
                 donutRadioGroup(donutType.findViewById(checkedId));
             }
         });
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedFlavor = parent.getItemAtPosition(position).toString();
-                if (selectedFlavor.equals("Plain")) {
-                    donutImage.setImageResource(R.drawable.plain);
-                } else if (selectedFlavor.equals("Chocolate")) {
-                    donutImage.setImageResource(R.drawable.choco);
-                } else if (selectedFlavor.equals("Strawberry")) {
-                    donutImage.setImageResource(R.drawable.strawberry);
-                } else if (selectedFlavor.equals("Powdered Sugar")) {
-                    donutImage.setImageResource(R.drawable.yeast);
-                }
-                else if (selectedFlavor.equals("Boston Cream")) {
-                    donutImage.setImageResource(R.drawable.boston);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                //nada//
-            }
-        });
-
+//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                selectedFlavor = parent.getItemAtPosition(position).toString();
+//                if (selectedFlavor.equals("Plain")) {
+//                    donutImage.setImageResource(R.drawable.plain);
+//                } else if (selectedFlavor.equals("Chocolate")) {
+//                    donutImage.setImageResource(R.drawable.choco);
+//                } else if (selectedFlavor.equals("Strawberry")) {
+//                    donutImage.setImageResource(R.drawable.strawberry);
+//                } else if (selectedFlavor.equals("Powdered Sugar")) {
+//                    donutImage.setImageResource(R.drawable.yeast);
+//                }
+//                else if (selectedFlavor.equals("Boston Cream")) {
+//                    donutImage.setImageResource(R.drawable.boston);
+//                }
+//            }
     }
 
     private void increaseQuant(){
