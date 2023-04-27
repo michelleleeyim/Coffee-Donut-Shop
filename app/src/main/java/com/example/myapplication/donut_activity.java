@@ -70,7 +70,7 @@ public class donut_activity extends AppCompatActivity {
         setContentView(R.layout.activity_donut);
         order = (Order) getIntent().getSerializableExtra("order");
         orderList = (ArrayList<Order>) getIntent().getSerializableExtra("order list");
-        donut_activity donut = new donut_activity();
+        //donut_activity donut = new donut_activity();
         addToCart = findViewById(R.id.addToCart);
         donutQuantity = findViewById(R.id.donutQuantity);
         subTotalDisplay = findViewById(R.id.subTotalDisplay);
