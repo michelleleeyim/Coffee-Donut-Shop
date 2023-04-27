@@ -111,7 +111,7 @@ public class Order implements Serializable {
         if (currentItem == null) {
             return false;
         } else {
-            if (currentItem.getQuantity() > item.quantity) {
+            if (currentItem.getQuantity() > item.getQuantity()) {
                 currentItem.setQuantity(currentItem.getQuantity() -
                         item.getQuantity());
             } else if (currentItem.getQuantity() == item.getQuantity()) {
@@ -122,7 +122,7 @@ public class Order implements Serializable {
                 Order[size - 1] = null;
                 size--;
             } else if (currentItem.getQuantity() < item.getQuantity()) {
-
+                return false;
             }
             totalPrice -= item.itemPrice();
             return true;

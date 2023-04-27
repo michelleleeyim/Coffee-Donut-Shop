@@ -209,7 +209,7 @@ public class activity_coffee extends AppCompatActivity {
                                     + Integer.toString(currentItem.getQuantity() + INCREMENT),
                             Toast.LENGTH_SHORT).show();
                 } else {
-                    order.remove(currentItem);
+                    order.remove(newCoffee);
                     subTotalDisplay.setText(String.format("$%.2f", order.getTotalPrice()));
                     Toast.makeText(getApplicationContext(), "Removed from cart.",
                             Toast.LENGTH_SHORT).show();
