@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -38,6 +39,7 @@ public class donut_activity extends AppCompatActivity implements DonutAdapter.On
     private RecyclerView recyclerView;
     private ImageButton addButton;
     private ImageButton minusButton;
+    private ImageView donutTypeImage;
 
     /**
      * Sets up UI and the necessary variables, adapters and event listeners for the donut screen.
@@ -114,6 +116,7 @@ public class donut_activity extends AppCompatActivity implements DonutAdapter.On
         donutType = findViewById(R.id.donutType);
         recyclerView = findViewById(R.id.donut_flavor);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        donutTypeImage = findViewById(R.id.donutTypeImage);
         quantity = NONE;
     }
 
@@ -166,10 +169,13 @@ public class donut_activity extends AppCompatActivity implements DonutAdapter.On
         boolean selected = ((RadioButton) view).isChecked();
         if (view.getId() == R.id.yeastButton && selected) {
             selectedType = "Yeast";
+            donutTypeImage.setImageResource(R.drawable.type);
         } else if (view.getId() == R.id.cakeButton && selected) {
             selectedType = "Cake";
+            donutTypeImage.setImageResource(R.drawable.cake);
         } else {
             selectedType = "Donut Hole";
+            donutTypeImage.setImageResource(R.drawable.hole);
         }
         Toast.makeText(this, selectedType, Toast.LENGTH_SHORT).show();
     }
