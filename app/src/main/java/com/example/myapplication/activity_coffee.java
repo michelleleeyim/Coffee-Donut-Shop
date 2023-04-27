@@ -1,5 +1,7 @@
 package com.example.myapplication;
+
 import code.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,12 +19,13 @@ import java.util.ArrayList;
 
 public class activity_coffee extends AppCompatActivity {
     private int NONE = 0;
+    private int ADD_IN_SIZE = 5;
+    private int INCREMENT = 1;
     private int quantity;
     private Order order;
     private ArrayList<Order> orderList;
     private TextView coffeeQuantity;
     private TextView subTotalDisplay;
-
     private String size;
     private CheckBox sweetCream;
     private CheckBox irishCream;
@@ -30,12 +33,6 @@ public class activity_coffee extends AppCompatActivity {
     private CheckBox mocha;
     private CheckBox frenchVanilla;
 
-
-//    public void setOrder(Order Order) {
-//        this.order = Order;
-//    }
-//
-//    public void setOrder
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,20 +50,17 @@ public class activity_coffee extends AppCompatActivity {
         caramel = findViewById(R.id.caramel);
         mocha = findViewById(R.id.mocha);
         frenchVanilla = findViewById(R.id.frenchVanilla);
-
         quantity = NONE;
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView,
+                                       int position, long id) {
                 size = parentView.getItemAtPosition(position).toString();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // Do nothing
             }
         });
-
         coffeeAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +73,6 @@ public class activity_coffee extends AppCompatActivity {
                 decreaseQuant();
             }
         });
-
         coffeeQuantity.setText(String.valueOf(quantity));
     }
 
@@ -89,7 +82,7 @@ public class activity_coffee extends AppCompatActivity {
     }
 
     private void decreaseQuant() {
-        if (quantity > 0) {
+        if (quantity > NONE) {
             quantity--;
             coffeeQuantity.setText(String.valueOf(quantity));
         }
@@ -102,17 +95,22 @@ public class activity_coffee extends AppCompatActivity {
         intent.putExtra("order list", orderList);
         startActivity(intent);
     }
-    private Coffee createCoffee(){
-        String[] addIns = new String[5];
-        if(sweetCream.isChecked()){
+
+    private Coffee createCoffee() {
+        String[] addIns = new String[ADD_IN_SIZE];
+        if (sweetCream.isChecked()) {
             addIns[0] = "Sweet Cream";
-        }if(frenchVanilla.isChecked()){
+        }
+        if (frenchVanilla.isChecked()) {
             addIns[1] = "French Vanilla";
-        }if(irishCream.isChecked()){
-            addIns[2]= "Irish Cream";
-        }if(caramel.isChecked()){
+        }
+        if (irishCream.isChecked()) {
+            addIns[2] = "Irish Cream";
+        }
+        if (caramel.isChecked()) {
             addIns[3] = "Caramel";
-        }if(mocha.isChecked()){
+        }
+        if (mocha.isChecked()) {
             addIns[4] = "Mocha";
         }
         Coffee coffee = new Coffee("Coffee", size, addIns, quantity);
@@ -121,53 +119,52 @@ public class activity_coffee extends AppCompatActivity {
 
     public void addCoffee(View view) {
         if (size == null) {
-            // No size selected
-            Toast.makeText(getApplicationContext(), "Please select a size", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Please select a size",
+                    Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (quantity == NONE) {
-            // No quantity selected
-            Toast.makeText(getApplicationContext(), "Please select a quantity", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Please select a quantity",
+                    Toast.LENGTH_SHORT).show();
             return;
         }
+
         Coffee newCoffee = createCoffee();
-        // Add coffee to order
         order.add(newCoffee);
-        // Show confirmation message
-        Toast.makeText(getApplicationContext(), "Added " + quantity + " " + size + " coffee(s) to your order", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Added " + quantity + " " + size
+                + " coffee(s) to your order", Toast.LENGTH_SHORT).show();
         subTotalDisplay.setText(String.format("$%.2f", order.getTotalPrice()));
         Log.d("Cart Content", order.toString());
     }
 
     public void removeCoffee(View view) {
-
-        // Check if a coffee size and quantity have been selected
         if (size == null) {
-            Toast.makeText(getApplicationContext(), "Please select the cup size.", Toast.LENGTH_SHORT).show();
-            return;
+            Toast.makeText(getApplicationContext(), "Please select the cup size.",
+                    Toast.LENGTH_SHORT).show();
         } else if (quantity == NONE) {
-            Toast.makeText(getApplicationContext(), "Please select a different quantity.", Toast.LENGTH_SHORT).show();
-            return;
+            Toast.makeText(getApplicationContext(), "Please select a different quantity.",
+                    Toast.LENGTH_SHORT).show();
         } else {
-            // Create a new Coffee object with the selected add-ins, size, and quantity
             Coffee newCoffee = createCoffee();
-            // Get the matching Coffee object from the Order object
             Coffee currentItem = (Coffee) order.returnItem(newCoffee);
             if (currentItem == null) {
-                Toast.makeText(getApplicationContext(), "No matching item.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "No matching item.",
+                        Toast.LENGTH_SHORT).show();
             }
-            if(currentItem!=null) {
+            if (currentItem != null) {
                 if (currentItem.getQuantity() < quantity) {
-                    Toast.makeText(getApplicationContext(), "Enter quantity less than " + Integer.toString(currentItem.getQuantity() + 1), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Enter quantity less than "
+                            + Integer.toString(currentItem.getQuantity() + INCREMENT),
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     order.remove(currentItem);
                     subTotalDisplay.setText(String.format("$%.2f", order.getTotalPrice()));
-                    Toast.makeText(getApplicationContext(), "Removed from cart.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Removed from cart.",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         }
     }
-    //hi
 
 }
